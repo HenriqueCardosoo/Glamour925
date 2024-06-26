@@ -1,6 +1,9 @@
 export default {
   COLORS: {
-    BACKGROUND_100: '#FCF7F7;'
-    // colocar cores, tamanho de fontes etc..
+    BACKGROUND_100: '#FCF7F7;',
+    BACKGROUND_400: '#e7ced1;',
+
+    GRAY_100: '#5B5B5B',
+    GRAY_300: '#2f2f2f'
   }
 };
