@@ -5,6 +5,7 @@ export const Container = styled.div`
   padding: 100px;
   padding-top: 236px;
   overflow-y: auto;
+  box-sizing: border-box;
 `;
 
 export const TextColumn = styled.div`
@@ -12,7 +13,12 @@ export const TextColumn = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  text-align: justify;
+  max-width: 600px;
+  box-sizing: border-box;
+
+  main {
+    width: 100%;
+  }
 
   h1 {
     font-size: 50px;
@@ -37,10 +43,21 @@ export const Img = styled.img`
   height: 654px;
   flex-shrink: 0;
   background-color: gray;
+
+  @media (max-width: 1100px) {
+    width: 317px;
+    height: 400px;
+  }
 `;
 
 export const Content = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
   gap: 65px;
+
+  @media (max-width: 1400px) {
+    flex-wrap: wrap;
+  }
 `;
