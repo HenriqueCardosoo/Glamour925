@@ -6,6 +6,12 @@ export const Container = styled.div`
   padding-top: 236px;
   overflow-y: auto;
   box-sizing: border-box;
+
+  @media (max-width: 900px) {
+    padding: 30px;
+    padding-top: 200px;
+    overflow: hidden;
+  }
 `;
 
 export const TextColumn = styled.div`
@@ -32,10 +38,25 @@ export const TextColumn = styled.div`
   }
 `;
 
-export const ImagesColumn = styled.div`
+export const Content = styled.div`
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
   gap: 65px;
+
+  @media (max-width: 1400px) {
+    flex-wrap: wrap;
+  }
+`;
+
+export const StaticImagesWrapper = styled.div`
+  display: flex;
+  gap: 65px;
+
+  @media (max-width: 1100px) {
+    display: none;
+  }
 `;
 
 export const Img = styled.img`
@@ -50,14 +71,46 @@ export const Img = styled.img`
   }
 `;
 
-export const Content = styled.div`
-  display: flex;
-  justify-content: space-between;
+export const CarouselWrapper = styled.div`
+  position: relative;
   width: 100%;
-  box-sizing: border-box;
-  gap: 65px;
+  overflow: hidden;
+  display: none;
+  align-items: center;
 
-  @media (max-width: 1400px) {
-    flex-wrap: wrap;
+  @media (max-width: 1100px) {
+    display: flex;
+  }
+`;
+
+export const ImagesContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 65px;
+  transform: translateX(${({ translate }) => translate}px);
+  transition: transform 0.3s ease-in-out;
+`;
+
+export const ArrowButton = styled.button`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1;
+  color: #000;
+
+  &:hover {
+    color: #222;
+  }
+
+  &.left {
+    left: 0;
+  }
+
+  &.right {
+    right: 0;
   }
 `;
