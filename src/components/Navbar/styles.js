@@ -38,7 +38,7 @@ export const NavLinks = styled.div`
 `;
 
 export const NavLink = styled.a`
-  color: ${({ theme }) => theme.COLORS.GRAY_300};
+  color: ${({ theme }) => theme.COLORS.GRAY_100};
   text-decoration: none;
   margin: 0 10px;
   font-size: 14px;
@@ -83,13 +83,59 @@ export const IconLink = styled.a`
 
 export const MenuButton = styled.div`
   display: none;
-  font-size: 24px;
+  width: 30px;
+  height: 20px;
+  position: relative;
   cursor: pointer;
-  color: #000;
+  z-index: 1001;
 
   @media (max-width: 1100px) {
     display: block;
   }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+
+    background-color: ${({ theme }) => theme.COLORS.GRAY_100};
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  &.open::before {
+    transform: rotate(45deg);
+    top: 50%;
+  }
+
+  &.open::after {
+    transform: rotate(-45deg);
+    top: 50%;
+  }
+
+  &.open > div {
+    opacity: 0;
+  }
+`;
+
+export const BurgerLine = styled.div`
+  width: 100%;
+  height: 2px;
+  background-color: ${({ theme }) => theme.COLORS.GRAY_100};
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: opacity 0.2s;
 `;
 
 export const MobileNavLinks = styled.div.withConfig({
@@ -99,7 +145,7 @@ export const MobileNavLinks = styled.div.withConfig({
   flex-direction: column;
   align-items: flex-start;
   position: absolute;
-  top: 70px;
+  top: 90px;
   left: 0;
   right: 0;
   background-color: #efd2d7;
