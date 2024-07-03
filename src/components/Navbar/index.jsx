@@ -1,7 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine, SearchInput, SearchContainer } from './styles';
+import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine } from './styles';
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa';
+import SearchBar from '../Search/index';
 
 export default function Navbar() {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
@@ -26,7 +27,7 @@ export default function Navbar() {
         <NavLink href="#pingentes">Pingentes</NavLink>
         <NavLink href="#aneis">Anéis</NavLink>
 
-        <IconLink onClick={toggleSearch}>
+        <IconLink href="#search" onClick={toggleSearch}>
           <FaSearch />
         </IconLink>
         <IconLink href="#user">
@@ -44,7 +45,7 @@ export default function Navbar() {
           <BurgerLine />
         </MenuButton>
 
-        <IconLink onClick={toggleSearch}>
+        <IconLink href="#search" onClick={toggleSearch}>
           <FaSearch />
           <span>Buscar</span>
         </IconLink>
@@ -52,6 +53,7 @@ export default function Navbar() {
           <FaShoppingBag />
         </IconLink>
       </IconContainer>
+      {isSearchOpen && <SearchBar isOpen={isSearchOpen} />}
       <MobileNavLinks isOpen={isMobileNavOpen}>
         <MobileNavLink href="#prata925">Prata 925</MobileNavLink>
         <MobileNavLink href="#semijoias">Semijóias</MobileNavLink>
@@ -60,11 +62,6 @@ export default function Navbar() {
         <MobileNavLink href="#pingentes">Pingentes</MobileNavLink>
         <MobileNavLink href="#aneis">Anéis</MobileNavLink>
       </MobileNavLinks>
-      {isSearchOpen && (
-        <SearchContainer>
-          <SearchInput type="text" placeholder="Buscar..." />
-        </SearchContainer>
-      )}
     </Container>
   );
 }
