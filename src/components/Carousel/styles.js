@@ -18,6 +18,7 @@ export const ImagesContainer = styled.div`
   gap: 65px;
   transform: translateX(${({ translate }) => translate}px);
   transition: transform 0.3s ease-in-out;
+  transition: 0.5s;
 `;
 
 export const Img = styled.img`
@@ -68,6 +69,7 @@ export const IndicatorContainer = styled.div`
 export const Indicator = styled.div.withConfig({
   shouldForwardProp: (prop) => prop !== 'isActive'
 })`
+  transition: 1s;
   width: 10px;
   height: 10px;
   background-color: ${({ isActive }) => (isActive ? '#000' : '#ccc')};

@@ -11,6 +11,7 @@ export const Container = styled.div`
   z-index: 1000;
   left: 0;
   right: 0;
+  user-select: none;
 
   @media (max-width: 1100px) {
     padding: 0 10px;
@@ -71,6 +72,7 @@ export const IconLink = styled.a`
   font-size: 20px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   &:hover {
     color: ${({ theme }) => theme.COLORS.GRAY_300};
@@ -165,4 +167,29 @@ export const MobileNavLink = styled.a`
   &:hover {
     text-decoration: underline;
   }
+`;
+
+export const SearchContainer = styled.div`
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  background-color: #efd2d7;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  z-index: 999;
+
+  @media (max-width: 1100px) {
+    background-color: #efd2d7;
+  }
+`;
+
+export const SearchInput = styled.input`
+  width: 100%;
+  max-width: 600px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
 `;

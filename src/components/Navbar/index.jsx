@@ -1,13 +1,18 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine } from './styles';
+import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine, SearchInput, SearchContainer } from './styles';
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+  const [isSearchOpen, setSearchOpen] = useState(false);
 
   const toggleMobileNav = () => {
     setMobileNavOpen(!isMobileNavOpen);
+  };
+
+  const toggleSearch = () => {
+    setSearchOpen(!isSearchOpen);
   };
 
   return (
@@ -21,7 +26,7 @@ export default function Navbar() {
         <NavLink href="#pingentes">Pingentes</NavLink>
         <NavLink href="#aneis">Anéis</NavLink>
 
-        <IconLink href="#search">
+        <IconLink onClick={toggleSearch}>
           <FaSearch />
         </IconLink>
         <IconLink href="#user">
@@ -39,7 +44,7 @@ export default function Navbar() {
           <BurgerLine />
         </MenuButton>
 
-        <IconLink href="#search">
+        <IconLink onClick={toggleSearch}>
           <FaSearch />
           <span>Buscar</span>
         </IconLink>
@@ -55,6 +60,11 @@ export default function Navbar() {
         <MobileNavLink href="#pingentes">Pingentes</MobileNavLink>
         <MobileNavLink href="#aneis">Anéis</MobileNavLink>
       </MobileNavLinks>
+      {isSearchOpen && (
+        <SearchContainer>
+          <SearchInput type="text" placeholder="Buscar..." />
+        </SearchContainer>
+      )}
     </Container>
   );
 }
