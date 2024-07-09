@@ -2,6 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Navbar from './components/Navbar';
+import Category from './components/Category';
 import { Details } from './pages/Details';
 import GlobalStyles from './styles/global';
 import { ThemeProvider } from 'styled-components';
@@ -13,6 +14,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <GlobalStyles />
       <Navbar />
       <Details />
+      <Category />
     </ThemeProvider>
   </React.StrictMode>
 );
