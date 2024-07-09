@@ -8,7 +8,7 @@ export const Container = styled.div`
   box-sizing: border-box;
 
   @media (max-width: 900px) {
-    padding: 30px;
+    padding: 40px;
     padding-top: 200px;
     overflow: hidden;
   }
@@ -29,12 +29,13 @@ export const TextColumn = styled.div`
   h1 {
     font-size: 50px;
     margin-bottom: 20px;
-    color: #222;
+    color: ${({ theme }) => theme.COLORS.GRAY_300};
   }
 
   p {
     font-size: 18px;
     margin: 10px 0;
+    color: ${({ theme }) => theme.COLORS.GRAY_100};
   }
 `;
 
