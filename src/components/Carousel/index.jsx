@@ -2,11 +2,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSwipeable } from 'react-swipeable';
+import { useNavigate } from 'react-router-dom';
 import { CarouselWrapper, ImagesContainer, Img, ArrowButton, IndicatorContainer, Indicator } from './styles';
 
 const Carousel = ({ images }) => {
   const [translate, setTranslate] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handlePrev = () => {
     if (currentIndex > 0) {
@@ -35,6 +37,10 @@ const Carousel = ({ images }) => {
     trackMouse: true
   });
 
+  const handleClick = (index) => {
+    navigate(`/item/${index}`);
+  };
+
   return (
     <CarouselWrapper {...handlers}>
       <ArrowButton className="left" onClick={handlePrev}>
@@ -42,7 +48,7 @@ const Carousel = ({ images }) => {
       </ArrowButton>
       <ImagesContainer translate={translate}>
         {images.map((src, index) => (
-          <Img key={index} src={src} alt={`Imagem ${index + 1}`} />
+          <Img key={index} src={src} alt={`Imagem ${index + 1}`} onClick={() => handleClick(index)} />
         ))}
       </ImagesContainer>
       <ArrowButton className="right" onClick={handleNext}>
