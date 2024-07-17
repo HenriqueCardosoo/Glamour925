@@ -5,7 +5,7 @@ import { Container, TextColumn, Content, StaticImagesWrapper, Img } from './styl
 
 const images = ['path/to/image1.jpg', 'path/to/image2.jpg', 'path/to/image3.jpg', 'path/to/image4.jpg', 'path/to/image5.jpg'];
 
-export function Details() {
+export default function Details() {
   const desktopImagens = images.slice(0, 2);
 
   return (
