@@ -2,11 +2,12 @@
 import React from 'react';
 import Carousel from '../../components/Carousel';
 import { Container, TextColumn, Content, StaticImagesWrapper, Img } from './styles';
+import images from '../../assets/images/images';
 
-const images = ['path/to/image1.jpg', 'path/to/image2.jpg', 'path/to/image3.jpg', 'path/to/image4.jpg', 'path/to/image5.jpg'];
+const imagesArray = [images.image1, images.image2, images.image3, images.image4, images.image5, images.image6];
 
 export default function Details() {
-  const desktopImagens = images.slice(0, 2);
+  const desktopImagens = imagesArray.slice(0, 2);
 
   return (
     <Container>
@@ -22,7 +23,7 @@ export default function Details() {
             <Img key={index} src={src} alt={`Imagem ${index + 1}`} />
           ))}
         </StaticImagesWrapper>
-        <Carousel images={images} />
+        <Carousel images={imagesArray} />
       </Content>
     </Container>
   );
