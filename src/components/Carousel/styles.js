@@ -1,15 +1,12 @@
+// src/components/Carousel/styles.js
 import styled from 'styled-components';
 
 export const CarouselWrapper = styled.div`
   position: relative;
   width: 100%;
   overflow: hidden;
-  display: none;
+  display: flex;
   align-items: center;
-
-  @media (max-width: 1100px) {
-    display: flex;
-  }
 `;
 
 export const ImagesContainer = styled.div`
@@ -18,7 +15,6 @@ export const ImagesContainer = styled.div`
   gap: 65px;
   transform: translateX(${({ translate }) => translate}px);
   transition: transform 0.3s ease-in-out;
-  transition: 0.5s;
 `;
 
 export const Img = styled.img`
