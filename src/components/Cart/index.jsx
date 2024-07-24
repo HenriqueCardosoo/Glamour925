@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CartContainer, CartItem, CartHeader, CartFooter, ContinueButton, Overlay, CloseButton } from './styles';
+import { CartContainer, CartItem, CartHeader, CartFooter, ContinueButton, Overlay, CloseButton, RemoveButton } from './styles';
 
-const Cart = ({ items, isOpen, onClose }) => {
+const Cart = ({ items, isOpen, onClose, onRemoveItem }) => {
   return (
     <>
       {/* resolvido o erro isOpen, usando Transient Props que começa com o prefixo "$" que ajuda a filtrar props não reconhecidos automaticamente*/}
@@ -21,6 +21,7 @@ const Cart = ({ items, isOpen, onClose }) => {
                 <h4>{item.name}</h4>
                 <p>{item.price}</p>
               </div>
+              <RemoveButton onClick={() => onRemoveItem(index)}>Remover</RemoveButton>
             </CartItem>
           ))
         ) : (
@@ -43,7 +44,8 @@ Cart.propTypes = {
     })
   ).isRequired,
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  onRemoveItem: PropTypes.func.isRequired
 };
 
 export default Cart;

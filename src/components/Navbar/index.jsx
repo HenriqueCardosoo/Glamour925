@@ -1,12 +1,12 @@
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine } from './styles';
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa';
-import PropTypes from 'prop-types';
 import SearchBar from '../Search';
 import Cart from '../Cart';
 
-export default function Navbar({ cartItems }) {
+export default function Navbar({ cartItems, onRemoveItem }) {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [isCartOpen, setCartOpen] = useState(false);
@@ -71,11 +71,12 @@ export default function Navbar({ cartItems }) {
           <MobileNavLink href="#aneis">Anéis</MobileNavLink>
         </MobileNavLinks>
       </Container>
-      <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} />
+      <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} onRemoveItem={onRemoveItem} />
     </>
   );
 }
 
 Navbar.propTypes = {
-  cartItems: PropTypes.array.isRequired
+  cartItems: PropTypes.array.isRequired,
+  onRemoveItem: PropTypes.func.isRequired
 };

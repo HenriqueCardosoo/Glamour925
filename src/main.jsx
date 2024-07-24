@@ -1,4 +1,3 @@
-// src/main.jsx
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -23,16 +22,20 @@ export const MainApp = () => {
     setCartItems([...cartItems, item]);
   };
 
+  const removeItemFromCart = (indexToRemove) => {
+    setCartItems(cartItems.filter((_, index) => index !== indexToRemove));
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <Navbar cartItems={cartItems} /> {/* Passando cartItems para Navbar */}
+        <Navbar cartItems={cartItems} onRemoveItem={removeItemFromCart} />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/item/:id" element={<ItemDetails onAddToCart={addItemToCart} />} />
+          <Route path="/item/:id" element={<ItemDetails onAddToCart={addItemToCart} onRemoveItem={removeItemFromCart} />} />
         </Routes>
-        <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} />
+        <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} onRemoveItem={removeItemFromCart} />
       </Router>
     </ThemeProvider>
   );

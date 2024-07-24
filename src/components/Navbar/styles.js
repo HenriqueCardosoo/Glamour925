@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 0 20px;
-  background-color: #efd2d7;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -150,7 +150,7 @@ export const MobileNavLinks = styled.div.withConfig({
   top: 90px;
   left: 0;
   right: 0;
-  background-color: #efd2d7;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
   padding: 20px;
   z-index: 999;
 
