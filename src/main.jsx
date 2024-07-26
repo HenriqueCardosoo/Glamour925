@@ -30,7 +30,7 @@ export const MainApp = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyles />
       <Router>
-        <Navbar cartItems={cartItems} onRemoveItem={removeItemFromCart} />
+        <Navbar cartItems={cartItems} onRemoveItem={removeItemFromCart} toggleCart={toggleCart} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/item/:id" element={<ItemDetails onAddToCart={addItemToCart} onRemoveItem={removeItemFromCart} />} />

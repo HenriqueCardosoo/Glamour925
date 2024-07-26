@@ -4,12 +4,10 @@ import PropTypes from 'prop-types';
 import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine } from './styles';
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa';
 import SearchBar from '../Search';
-import Cart from '../Cart';
 
-export default function Navbar({ cartItems, onRemoveItem }) {
+export default function Navbar({ toggleCart }) {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
-  const [isCartOpen, setCartOpen] = useState(false);
 
   const toggleMobileNav = () => {
     setMobileNavOpen(!isMobileNavOpen);
@@ -17,10 +15,6 @@ export default function Navbar({ cartItems, onRemoveItem }) {
 
   const toggleSearch = () => {
     setSearchOpen(!isSearchOpen);
-  };
-
-  const toggleCart = () => {
-    setCartOpen(!isCartOpen);
   };
 
   return (
@@ -44,7 +38,13 @@ export default function Navbar({ cartItems, onRemoveItem }) {
           <IconLink href="#wishlist">
             <FaHeart />
           </IconLink>
-          <IconLink href="#cart" onClick={toggleCart}>
+          <IconLink
+            href="#cart"
+            onClick={(e) => {
+              e.preventDefault();
+              toggleCart();
+            }}
+          >
             <FaShoppingBag />
           </IconLink>
         </NavLinks>
@@ -57,7 +57,13 @@ export default function Navbar({ cartItems, onRemoveItem }) {
             <FaSearch />
             <span>Buscar</span>
           </IconLink>
-          <IconLink href="#cart" onClick={toggleCart}>
+          <IconLink
+            href="#cart"
+            onClick={(e) => {
+              e.preventDefault();
+              toggleCart();
+            }}
+          >
             <FaShoppingBag />
           </IconLink>
         </IconContainer>
@@ -71,12 +77,10 @@ export default function Navbar({ cartItems, onRemoveItem }) {
           <MobileNavLink href="#aneis">Anéis</MobileNavLink>
         </MobileNavLinks>
       </Container>
-      <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} onRemoveItem={onRemoveItem} />
     </>
   );
 }
 
 Navbar.propTypes = {
-  cartItems: PropTypes.array.isRequired,
-  onRemoveItem: PropTypes.func.isRequired
+  toggleCart: PropTypes.func.isRequired
 };
