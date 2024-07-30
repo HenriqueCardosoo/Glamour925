@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { Container, ItemImage, ItemText, ItemPrice, AddToCartButton, BackButton } from './styles';
-import images from '../../assets/images/images';
+import images from '../../assets/carousel-img/images';
 
 const items = [
   { id: 0, imgSrc: images.image1, name: 'Anel', price: 'R$100' },

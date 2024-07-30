@@ -56,24 +56,19 @@ export const CategoryContainer = styled.div`
 export const CategoryContent = styled.div`
   width: 230px;
   height: 230px;
-  background-color: gray;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 
   @media (max-width: 1600px) {
     width: 200px;
-    height: 200px;
   }
 
   @media (max-width: 1100px) {
     width: 170px;
-    height: 170px;
+    height: 200px;
   }
 
   @media (max-width: 950px) {
     width: 150px;
-    height: 150px;
+    height: 170px;
   }
 `;
 
@@ -81,7 +76,7 @@ export const CategoryImage = styled.img`
   width: 100%;
   height: auto;
   object-fit: cover;
-  border-radius: 8px;
+  /* border-radius: 8px; */
 `;
 
 export const CategoryText = styled.span`
