@@ -2,14 +2,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Container, Main, CategoryContent, CategoryContainer, CategoryImage, CategoryText } from './styles';
+import images from '../../assets/category-img/images';
 
 const categories = [
-  { imgSrc: 'path/to/image1.jpg', text: 'Anéis', price: 'R$100' },
-  { imgSrc: 'path/to/image2.jpg', text: 'Pulseiras', price: 'R$150' },
-  { imgSrc: 'path/to/image3.jpg', text: 'Brincos', price: 'R$120' },
-  { imgSrc: 'path/to/image4.jpg', text: 'Colares', price: 'R$200' },
-  { imgSrc: 'path/to/image5.jpg', text: 'Pingentes', price: 'R$130' },
-  { imgSrc: 'path/to/image6.jpg', text: 'Alianças', price: 'R$180' }
+  { imgSrc: images.image1, text: 'Anéis', price: 'R$100' },
+  { imgSrc: images.image2, text: 'Pulseira', price: 'R$150' },
+  { imgSrc: images.image3, text: 'Brincos', price: 'R$120' },
+  { imgSrc: images.image4, text: 'Colares', price: 'R$200' },
+  { imgSrc: images.image5, text: 'Pingentes', price: 'R$130' },
+  { imgSrc: images.image6, text: 'Alianças', price: 'R$180' }
 ];
 
 const CategoryItem = ({ imgSrc, text }) => (

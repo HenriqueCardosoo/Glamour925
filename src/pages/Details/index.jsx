@@ -2,7 +2,7 @@
 import React from 'react';
 import Carousel from '../../components/Carousel';
 import { Container, TextColumn, Content } from './styles';
-import images from '../../assets/images/images';
+import images from '../../assets/carousel-img/images';
 
 const imagesArray = [images.image1, images.image2, images.image3, images.image4, images.image5, images.image6];
 
