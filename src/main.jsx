@@ -10,6 +10,7 @@ import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme';
 import Cart from './components/Cart';
 import './components/Cart/styles'; // Importando a animação
+import CategoryPage from './pages/CategoryPage';
 
 export const MainApp = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -36,6 +37,7 @@ export const MainApp = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/item/:id" element={<ItemDetails onAddToCart={addItemToCart} />} />
+          <Route path="/category/:categoryName" element={<CategoryPage />} />
         </Routes>
         <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} onRemoveItem={removeItemFromCart} />
       </Router>

@@ -1,5 +1,11 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
+export const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: inherit;
+  display: block;
+`;
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
@@ -83,4 +89,5 @@ export const CategoryText = styled.span`
   margin-top: 10px;
   font-size: 18px;
   color: #333;
+  list-style: none;
 `;
