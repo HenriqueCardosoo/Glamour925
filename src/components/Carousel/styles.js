@@ -22,6 +22,7 @@ export const Img = styled.img`
   height: 654px;
   flex-shrink: 0;
   background-color: gray;
+  cursor: pointer;
 
   @media (max-width: 1100px) {
     width: 317px;
