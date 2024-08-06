@@ -37,7 +37,7 @@ export const MainApp = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/item/:id" element={<ItemDetails onAddToCart={addItemToCart} />} />
-          <Route path="/category/:categoryName" element={<CategoryPage />} />
+          <Route path="/category/:categoryName" element={<CategoryPage onAddToCart={addItemToCart} />} />
         </Routes>
         <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} onRemoveItem={removeItemFromCart} />
       </Router>

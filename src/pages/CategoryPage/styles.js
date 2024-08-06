@@ -1,3 +1,4 @@
+// src/pages/CategoryPage/styles.js
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -5,10 +6,15 @@ export const Container = styled.div`
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 200px;
+
+  @media (max-width: 950px) {
+    padding: 10px;
+    padding-top: 200px;
+  }
 `;
 
 export const CategoryItem = styled.div`
-  width: 30%;
+  width: 30%; /* atualizar no desktop */
   margin-bottom: 30px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
@@ -39,4 +45,38 @@ export const Price = styled.p`
 export const Installments = styled.p`
   font-size: 14px;
   color: #555;
+`;
+
+export const AddToCartButton = styled.button`
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+
+  @media (max-width: 950px) {
+    padding: 5px 10px;
+  }
+
+  &:hover {
+    background: #444;
+  }
+`;
+
+export const BackButton = styled.button`
+  background: #ccc;
+  display: flex;
+  margin: 0 auto;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 10px;
+
+  &:hover {
+    background: #aaa;
+  }
 `;

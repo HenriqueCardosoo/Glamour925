@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { Container, ItemImage, ItemText, ItemPrice, AddToCartButton, BackButton } from './styles';
 import images from '../../assets/carousel-img/images';
+import { handleAddToCartWithAnimation } from '../../utils/cartUtils';
 
 const items = [
   { id: 0, imgSrc: images.image1, name: 'Anel', price: 'R$100' },
@@ -18,38 +19,12 @@ const ItemDetails = ({ onAddToCart }) => {
   const { id } = useParams();
   const item = items[parseInt(id, 10)];
 
-  const handleAddToCart = () => {
-    const img = document.createElement('img');
-    img.src = item.imgSrc;
-    img.style.position = 'absolute';
-    img.style.zIndex = '1000';
-    img.style.transition = 'transform 1s ease-in-out';
-    img.style.width = '100px';
-    img.style.height = '100px';
-
-    document.body.appendChild(img);
-
-    const rect = img.getBoundingClientRect();
-    img.style.left = `${rect.left}px`;
-    img.style.top = `${rect.top}px`;
-
-    // Inicia a animação
-    setTimeout(() => {
-      img.style.transform = `translate(${window.innerWidth - rect.left}px, ${-rect.top}px) scale(0.2)`;
-    }, 100);
-
-    img.addEventListener('transitionend', () => {
-      img.remove();
-      onAddToCart(item);
-    });
-  };
-
   return (
     <Container>
       <ItemImage src={item.imgSrc} alt={item.name} />
       <ItemText>{item.name}</ItemText>
       <ItemPrice>{item.price}</ItemPrice>
-      <AddToCartButton onClick={handleAddToCart}>Adicionar à Sacola</AddToCartButton>
+      <AddToCartButton onClick={() => handleAddToCartWithAnimation(item, onAddToCart)}>Adicionar à Sacola</AddToCartButton>
       <BackButton onClick={() => window.history.back()}>Voltar</BackButton>
     </Container>
   );
