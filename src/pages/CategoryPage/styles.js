@@ -1,4 +1,3 @@
-// src/pages/CategoryPage/styles.js
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -14,7 +13,12 @@ export const Container = styled.div`
 `;
 
 export const CategoryItem = styled.div`
-  width: 30%; /* atualizar no desktop */
+  width: 30%; /* Exibe 3 itens lado a lado no desktop */
+
+  @media (max-width: 950px) {
+    width: 45%; /* Exibe 2 itens lado a lado no mobile */
+  }
+
   margin-bottom: 30px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
