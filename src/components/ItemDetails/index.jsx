@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { Container, ItemImage, ItemText, ItemPrice, AddToCartButton, BackButton } from './styles';
@@ -18,6 +18,10 @@ const items = [
 const ItemDetails = ({ onAddToCart }) => {
   const { id } = useParams();
   const item = items[parseInt(id, 10)];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [id]); //usei useEffect para deixar o scrool sempre ao topo
 
   return (
     <Container>
