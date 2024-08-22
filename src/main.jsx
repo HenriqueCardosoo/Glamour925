@@ -11,6 +11,8 @@ import theme from './styles/theme';
 import Cart from './components/Cart';
 import './components/Cart/styles'; // Importando a animação
 import CategoryPage from './pages/CategoryPage';
+import RandomItemsSection from './components/RamdomItemsSection';
+import PropTypes from 'prop-types';
 
 export const MainApp = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -35,7 +37,7 @@ export const MainApp = () => {
       <Router>
         <Navbar toggleCart={toggleCart} />
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home onAddToCart={addItemToCart} />} />
           <Route path="/item/:id" element={<ItemDetails onAddToCart={addItemToCart} />} />
           <Route path="/category/:categoryName" element={<CategoryPage onAddToCart={addItemToCart} />} />
         </Routes>
@@ -45,12 +47,17 @@ export const MainApp = () => {
   );
 };
 
-const Home = () => (
+const Home = ({ onAddToCart }) => (
   <div>
     <Details />
     <Category />
+    <RandomItemsSection onAddToCart={onAddToCart} numItems={6} />
   </div>
 );
+
+Home.propTypes = {
+  onAddToCart: PropTypes.func.isRequired
+};
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
