@@ -13,6 +13,7 @@ import './components/Cart/styles'; // Importando a animação
 import CategoryPage from './pages/CategoryPage';
 import RandomItemsSection from './components/RamdomItemsSection';
 import PropTypes from 'prop-types';
+import Footer from './components/Footer';
 
 export const MainApp = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -43,6 +44,7 @@ export const MainApp = () => {
         </Routes>
         <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} onRemoveItem={removeItemFromCart} />
       </Router>
+      <Footer />
     </ThemeProvider>
   );
 };
