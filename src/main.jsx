@@ -44,7 +44,6 @@ export const MainApp = () => {
         </Routes>
         <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} onRemoveItem={removeItemFromCart} />
       </Router>
-      <Footer />
     </ThemeProvider>
   );
 };
@@ -54,6 +53,7 @@ const Home = ({ onAddToCart }) => (
     <Details />
     <Category />
     <RandomItemsSection onAddToCart={onAddToCart} numItems={6} />
+    <Footer />
   </div>
 );
 
