@@ -67,21 +67,6 @@ export const CartItem = styled.div`
   }
 `;
 
-export const RemoveButton = styled.button`
-  background: ${({ theme }) => theme.COLORS.BACKGROUND_500};
-  color: #000;
-  border: none;
-  padding: 5px 10px;
-  margin: 30px;
-  cursor: pointer;
-  font-size: 0.8rem;
-
-  &:hover {
-    background: pink;
-    color: #fff;
-  }
-`;
-
 export const CartFooter = styled.div`
   margin-top: auto;
   padding-top: 20px;
@@ -100,5 +85,23 @@ export const ContinueButton = styled.button`
 
   &:hover {
     background: #444;
+  }
+`;
+
+export const CartScroll = styled.div`
+  max-height: 90vh;
+  overflow-y: auto;
+`;
+
+export const GoToCartButton = styled.button`
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
   }
 `;
