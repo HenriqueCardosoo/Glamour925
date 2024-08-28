@@ -1,9 +1,18 @@
-/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-unused-vars
 import React from 'react';
 import PropTypes from 'prop-types';
-import { CartContainer, CartItem, CartHeader, CartFooter, ContinueButton, Overlay, CloseButton, RemoveButton } from './styles';
+import { CartContainer, CartHeader, CartFooter, ContinueButton, Overlay, CloseButton, GoToCartButton, CartScroll } from './styles';
+import { useNavigate } from 'react-router-dom';
+import CartItem from '../../components/CartItem'; // Importa o componente reutilizável
 
-const Cart = ({ items, isOpen, onClose, onRemoveItem }) => {
+const Cart = ({ items, isOpen, onClose, onRemoveItem, OnUpdateQuantity }) => {
+  const navigate = useNavigate();
+
+  const handleGoToCart = () => {
+    onClose();
+    navigate('/payment');
+  };
+
   return (
     <>
       {/* resolvido o erro isOpen, usando Transient Props que começa com o prefixo "$" que ajuda a filtrar props não reconhecidos automaticamente*/}
@@ -13,22 +22,10 @@ const Cart = ({ items, isOpen, onClose, onRemoveItem }) => {
           <h2>Sacola</h2>
           <CloseButton onClick={onClose}>X</CloseButton>
         </CartHeader>
-        {items.length > 0 ? (
-          items.map((item, index) => (
-            <CartItem key={index}>
-              <img src={item.imgSrc} alt={item.name} />
-              <div>
-                <h4>{item.name}</h4>
-                <p>{item.price}</p>
-              </div>
-              <RemoveButton onClick={() => onRemoveItem(index)}>Remover</RemoveButton>
-            </CartItem>
-          ))
-        ) : (
-          <p>Sua sacola está vazia.</p>
-        )}
+        <CartScroll>{items.length > 0 ? items.map((item, index) => <CartItem key={index} item={item} onRemove={() => onRemoveItem(index)} onUpdateQuantity={(quantity) => OnUpdateQuantity(index, quantity)} />) : <p>Sua sacola está vazia.</p>}</CartScroll>
         <CartFooter>
           <ContinueButton onClick={onClose}>Continuar Comprando</ContinueButton>
+          <GoToCartButton onClick={handleGoToCart}>Ir para a Sacola</GoToCartButton>
         </CartFooter>
       </CartContainer>
     </>
@@ -40,12 +37,14 @@ Cart.propTypes = {
     PropTypes.shape({
       imgSrc: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      price: PropTypes.string.isRequired
+      price: PropTypes.string.isRequired,
+      quantity: PropTypes.number.isRequired
     })
   ).isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onRemoveItem: PropTypes.func.isRequired
+  onRemoveItem: PropTypes.func.isRequired,
+  OnUpdateQuantity: PropTypes.func.isRequired
 };
 
 export default Cart;
