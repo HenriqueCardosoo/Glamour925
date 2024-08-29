@@ -16,6 +16,10 @@ export const CategoryItem = styled.div`
   width: 30%; /* Exibe 3 itens lado a lado no desktop */
 
   @media (max-width: 950px) {
+    width: 30%; /* Exibe 2 itens lado a lado no mobile */
+  }
+
+  @media (max-width: 700px) {
     width: 45%; /* Exibe 2 itens lado a lado no mobile */
   }
 
