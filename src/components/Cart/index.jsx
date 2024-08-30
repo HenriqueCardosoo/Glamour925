@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { CartContainer, CartHeader, CartFooter, ContinueButton, Overlay, CloseButton, GoToCartButton, CartScroll } from './styles';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +7,20 @@ import CartItem from '../../components/CartItem'; // Importa o componente reutil
 
 const Cart = ({ items, isOpen, onClose, onRemoveItem, OnUpdateQuantity }) => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (isOpen) {
+      // remove o scroll da pagina principal
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      // retorna o scroll
+      document.documentElement.style.overflow = '';
+    }
+
+    return () => {
+      document.documentElement.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const handleGoToCart = () => {
     onClose();
