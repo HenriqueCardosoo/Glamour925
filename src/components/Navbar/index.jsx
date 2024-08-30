@@ -1,11 +1,11 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine } from './styles';
+import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine, Badge } from './styles';
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa';
 import SearchBar from '../Search';
 
-export default function Navbar({ toggleCart }) {
+export default function Navbar({ toggleCart, cartItemCount }) {
   const [isMobileNavOpen, setMobileNavOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
 
@@ -46,6 +46,7 @@ export default function Navbar({ toggleCart }) {
             }}
           >
             <FaShoppingBag />
+            {cartItemCount > 0 && <Badge>{cartItemCount}</Badge>}
           </IconLink>
         </NavLinks>
         <IconContainer>
@@ -65,6 +66,7 @@ export default function Navbar({ toggleCart }) {
             }}
           >
             <FaShoppingBag />
+            {cartItemCount > 0 && <Badge>{cartItemCount}</Badge>}
           </IconLink>
         </IconContainer>
         {isSearchOpen && <SearchBar isOpen={isSearchOpen} />}
@@ -82,5 +84,6 @@ export default function Navbar({ toggleCart }) {
 }
 
 Navbar.propTypes = {
-  toggleCart: PropTypes.func.isRequired
+  toggleCart: PropTypes.func.isRequired,
+  cartItemCount: PropTypes.number.isRequired
 };

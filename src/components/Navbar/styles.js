@@ -64,6 +64,28 @@ export const CenterIconContainer = styled.div`
   width: 100%;
 `;
 
+export const Badge = styled.span`
+  position: absolute;
+  right: 40px;
+  bottom: 52px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 1100px) {
+    right: 30px;
+    bottom: 30px;
+  }
+`;
+
 export const IconLink = styled.a`
   color: ${({ theme }) => theme.COLORS.GRAY_100};
   text-decoration: none;
