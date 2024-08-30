@@ -21,7 +21,7 @@ const AppContent = ({ cartItems, isCartOpen, toggleCart, addItemToCart, removeIt
 
   return (
     <>
-      {location.pathname !== '/payment' && <Navbar toggleCart={toggleCart} />}
+      {location.pathname !== '/payment' && <Navbar toggleCart={toggleCart} cartItemCount={cartItems.length} />}
       <Routes>
         <Route path="/" element={<Home onAddToCart={addItemToCart} />} />
         <Route path="/item/:id" element={<ItemDetails onAddToCart={addItemToCart} />} />
@@ -52,7 +52,7 @@ export const MainApp = () => {
       setCartItems([...cartItems, { ...newItem, quantity: 1 }]);
     }
 
-    setCartOpen(true); // Abre a sacola após adicionar um item
+    setCartOpen(true);
   };
 
   const removeItemFromCart = (indexToRemove) => {
