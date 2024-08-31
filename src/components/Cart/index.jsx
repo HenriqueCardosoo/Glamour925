@@ -5,7 +5,7 @@ import { CartContainer, CartHeader, CartFooter, ContinueButton, Overlay, CloseBu
 import { useNavigate } from 'react-router-dom';
 import CartItem from '../../components/CartItem'; // Importa o componente reutilizável
 
-const Cart = ({ items, isOpen, onClose, onRemoveItem, OnUpdateQuantity }) => {
+const Cart = ({ items, isOpen, onClose, onRemoveItem, onUpdateQuantity }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Cart = ({ items, isOpen, onClose, onRemoveItem, OnUpdateQuantity }) => {
           <h2>Sacola</h2>
           <CloseButton onClick={onClose}>X</CloseButton>
         </CartHeader>
-        <CartScroll>{items.length > 0 ? items.map((item, index) => <CartItem key={index} item={item} onRemove={() => onRemoveItem(index)} onUpdateQuantity={(quantity) => OnUpdateQuantity(index, quantity)} />) : <p>Sua sacola está vazia.</p>}</CartScroll>
+        <CartScroll>{items.length > 0 ? items.map((item, index) => <CartItem key={index} item={item} onRemove={() => onRemoveItem(index)} onUpdateQuantity={(quantity) => onUpdateQuantity(index, quantity)} />) : <p>Sua sacola está vazia.</p>}</CartScroll>
         <CartFooter>
           <ContinueButton onClick={onClose}>Continuar Comprando</ContinueButton>
           <GoToCartButton onClick={handleGoToCart}>Ir para a Sacola</GoToCartButton>
@@ -58,7 +58,7 @@ Cart.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onRemoveItem: PropTypes.func.isRequired,
-  OnUpdateQuantity: PropTypes.func.isRequired
+  onUpdateQuantity: PropTypes.func.isRequired
 };
 
 export default Cart;
