@@ -79,6 +79,13 @@ export const QuantityButton = styled.button`
   &:nth-last-child(1) {
     color: pink;
   }
+
+  @media (max-width: 600px) {
+    &:active {
+      box-shadow: none;
+      border: none;
+    }
+  }
 `;
 
 export const QuantityDisplay = styled.span`
