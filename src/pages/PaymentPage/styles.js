@@ -6,7 +6,7 @@ export const PaymentContainer = styled.div`
   flex-direction: column;
   padding: 30px;
   min-height: 90vh;
-  overflow-y: hidden;
+  position: fixed;
 `;
 
 export const ItemsContainer = styled.div`
