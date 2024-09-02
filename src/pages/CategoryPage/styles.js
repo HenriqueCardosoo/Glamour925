@@ -78,7 +78,7 @@ export const BackButton = styled.button`
   padding: 10px 20px;
   cursor: pointer;
   font-size: 1rem;
-  margin-top: -150px;
+  margin-top: 0;
 
   &:hover {
     background: #aaa;
