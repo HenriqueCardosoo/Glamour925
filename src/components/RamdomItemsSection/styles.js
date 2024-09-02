@@ -64,10 +64,6 @@ export const AddToCartButton = styled.button`
   font-size: 1rem;
   margin-top: 10px;
 
-  @media (max-width: 950px) {
-    padding: 5px 10px;
-  }
-
   &:hover {
     background: #444;
   }
