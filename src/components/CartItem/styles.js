@@ -17,7 +17,7 @@ export const CartItemContainer = styled.div`
   }
 
   p {
-    margin: 5px 0 0;
+    margin: 5px 0 10px;
   }
 `;
 
@@ -43,7 +43,6 @@ export const QuantityControls = styled.div`
   align-items: center;
   border: 1px solid #ddd;
   border-radius: 50px;
-  /* padding: 0 10px; */
 
   &:hover {
     border: 1px solid pink;
