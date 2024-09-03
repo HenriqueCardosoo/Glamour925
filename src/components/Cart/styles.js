@@ -25,6 +25,10 @@ export const CartContainer = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const CartHeader = styled.div`
