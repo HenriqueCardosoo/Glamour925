@@ -1,22 +1,51 @@
 import styled from 'styled-components';
 
 export const SearchContainer = styled.div`
-  position: absolute;
-  top: 90px;
-  left: 0;
-  right: 0;
-  background-color: #efd2d7;
-  padding: 10px 20px;
+  position: fixed;
+  top: 80px; /* Ajuste conforme necessário */
+  width: 100%;
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
+  padding: 10px;
+  z-index: 1000;
+  max-height: 400px;
+  overflow-y: auto;
+`;
+
+export const SearchItem = styled.div`
   display: flex;
-  justify-content: center;
-  z-index: 999;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #666;
+  }
 `;
 
 export const SearchInput = styled.input`
   width: 100%;
-  max-width: 600px;
   padding: 10px;
-  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 1rem;
 `;
