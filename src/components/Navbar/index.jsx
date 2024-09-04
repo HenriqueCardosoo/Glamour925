@@ -22,12 +22,12 @@ export default function Navbar({ toggleCart, cartItemCount }) {
       <Container>
         <Logo>Glamour925</Logo>
         <NavLinks>
-          <NavLink href="#prata925">Prata 925</NavLink>
-          <NavLink href="#semijoias">Semijóias</NavLink>
-          <NavLink href="#pulseiras">Pulseiras</NavLink>
-          <NavLink href="#correntes">Correntes</NavLink>
-          <NavLink href="#pingentes">Pingentes</NavLink>
-          <NavLink href="#aneis">Anéis</NavLink>
+          <NavLink href="/category/aneis">Anéis</NavLink>
+          <NavLink href="/category/pulseiras">Pulseiras</NavLink>
+          <NavLink href="/category/brincos">Brincos</NavLink>
+          <NavLink href="/category/colares">Colares</NavLink>
+          <NavLink href="/category/pingentes">Pingentes</NavLink>
+          <NavLink href="/category/aliancas">Alianças</NavLink>
 
           <IconLink href="#search" onClick={toggleSearch}>
             <FaSearch />
@@ -71,12 +71,24 @@ export default function Navbar({ toggleCart, cartItemCount }) {
         </IconContainer>
         {isSearchOpen && <SearchBar isOpen={isSearchOpen} />}
         <MobileNavLinks isOpen={isMobileNavOpen}>
-          <MobileNavLink href="#prata925">Prata 925</MobileNavLink>
-          <MobileNavLink href="#semijoias">Semijóias</MobileNavLink>
-          <MobileNavLink href="#pulseiras">Pulseiras</MobileNavLink>
-          <MobileNavLink href="#correntes">Correntes</MobileNavLink>
-          <MobileNavLink href="#pingentes">Pingentes</MobileNavLink>
-          <MobileNavLink href="#aneis">Anéis</MobileNavLink>
+          <MobileNavLink href="/category/aneis" onClick={toggleMobileNav}>
+            Anéis
+          </MobileNavLink>
+          <MobileNavLink href="/category/pulseiras" onClick={toggleMobileNav}>
+            Pulseiras
+          </MobileNavLink>
+          <MobileNavLink href="/category/brincos" onClick={toggleMobileNav}>
+            Brincos
+          </MobileNavLink>
+          <MobileNavLink href="/category/colares" onClick={toggleMobileNav}>
+            Colares
+          </MobileNavLink>
+          <MobileNavLink href="/category/pingentes" onClick={toggleMobileNav}>
+            Pingentes
+          </MobileNavLink>
+          <MobileNavLink href="/category/aliancas" onClick={toggleMobileNav}>
+            Alianças
+          </MobileNavLink>
         </MobileNavLinks>
       </Container>
     </>
