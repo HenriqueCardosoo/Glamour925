@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SearchContainer = styled.div`
   position: fixed;
-  top: 80px; /* Ajuste conforme necessário */
+  top: 80px;
   width: 100%;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_500};
   padding: 10px;

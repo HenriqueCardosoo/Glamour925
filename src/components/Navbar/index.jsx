@@ -34,14 +34,16 @@ export default function Navbar({ toggleCart, cartItemCount }) {
   const handleSearch = (term) => {
     setSearchTerm(term);
     if (term) {
-      const allItems = Object.values(categoryData).flat();
+      const allItems = Object.entries(categoryData).flatMap(([category, items]) => items.map((item) => ({ ...item, categoryName: category })));
       const filtered = allItems.filter((item) => item.name.toLowerCase().includes(term.toLowerCase()) || item.price.toLowerCase().includes(term.toLowerCase()));
       setFilteredItems(filtered);
     } else {
       setFilteredItems([]);
     }
   };
-
+  const handleItemClick = (categoryName) => {
+    window.location.href = `/category/${categoryName}`;
+  };
   return (
     <>
       <Container>
@@ -98,16 +100,10 @@ export default function Navbar({ toggleCart, cartItemCount }) {
 
       {isSearchOpen && (
         <SearchContainer>
-          <SearchInput
-            ref={searchInputRef} // Adicionando o ref ao campo de busca
-            type="text"
-            placeholder="Buscar..."
-            value={searchTerm}
-            onChange={(e) => handleSearch(e.target.value)}
-          />
+          <SearchInput ref={searchInputRef} type="text" placeholder="Buscar..." value={searchTerm} onChange={(e) => handleSearch(e.target.value)} />
           <div>
             {filteredItems.map((item, index) => (
-              <SearchItem key={index}>
+              <SearchItem key={index} onClick={() => handleItemClick(item.categoryName)}>
                 <img src={item.imgSrc} alt={item.name} />
                 <div>
                   <h3>{item.name}</h3>
