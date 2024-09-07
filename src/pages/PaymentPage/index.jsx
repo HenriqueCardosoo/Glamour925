@@ -14,8 +14,21 @@ const PaymentPage = ({ items, onRemoveItem, onUpdateQuantity }) => {
   };
 
   const handleFinalizePurchase = () => {
-    // Lógica para finalizar a compra
-    console.log('Finalizando compra...');
+    const formattedItems = items.map((item) => `Produto: ${item.name}\nPreço: R$${item.price}\nQuantidade: ${item.quantity}\n`).join('\n');
+
+    // Corrigido: Convertendo preço e calculando total
+    const total = items.reduce((acc, item) => {
+      // Converta o preço de 'R$6.650,00' para número
+      const itemPrice = parseFloat(item.price.replace('R$', '').replace('.', '').replace(',', '.').trim());
+      return acc + itemPrice * item.quantity;
+    }, 0);
+
+    const message = `Olá, gostaria de fazer o pedido dos seguintes itens:\n\n${formattedItems}\nTotal: R$${total.toFixed(2)}`;
+
+    const whatsappNumber = '5511984914325';
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, '_blank');
   };
 
   return (
