@@ -28,7 +28,7 @@ const PaymentPage = ({ items, onRemoveItem, onUpdateQuantity }) => {
     const whatsappNumber = '5511984914325';
     const whatsappURL = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent(message)}`;
 
-    window.open(whatsappURL, '_blank');
+    window.location.href = whatsappURL;
   };
 
   return (
