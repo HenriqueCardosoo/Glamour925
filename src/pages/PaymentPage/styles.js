@@ -10,7 +10,7 @@ export const PaymentContainer = styled.div`
 `;
 
 export const ItemsContainer = styled.div`
-  max-height: 70vh;
+  max-height: 65vh;
   overflow-y: auto;
   display: flex;
   flex-direction: column;
