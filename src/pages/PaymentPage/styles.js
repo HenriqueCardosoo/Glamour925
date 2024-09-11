@@ -5,7 +5,7 @@ export const PaymentContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   padding: 30px;
-  min-height: 100%;
+  height: 100%;
   position: fixed;
 `;
 
