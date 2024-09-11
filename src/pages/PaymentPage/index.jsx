@@ -6,6 +6,10 @@ import { PaymentContainer, ItemsContainer, FinalizeButton } from './styles';
 import { ContinueButton, CartFooter, CartScroll } from '../../components/Cart/styles';
 import CartItem from '../../components/CartItem';
 
+const formatCurrency = (value) => {
+  return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+};
+
 const PaymentPage = ({ items, onRemoveItem, onUpdateQuantity }) => {
   const navigate = useNavigate();
 
@@ -13,16 +17,16 @@ const PaymentPage = ({ items, onRemoveItem, onUpdateQuantity }) => {
     navigate('/');
   };
 
-  const handleFinalizePurchase = () => {
-    const formattedItems = items.map((item) => `Produto: ${item.name}\nPreço: R$${item.price}\nQuantidade: ${item.quantity}\n`).join('\n');
-
-    // Corrigido: Convertendo preço e calculando total
-    const total = items.reduce((acc, item) => {
-      // Converta o preço de 'R$6.650,00' para número
+  const calculateTotal = () => {
+    return items.reduce((acc, item) => {
       const itemPrice = parseFloat(item.price.replace('R$', '').replace('.', '').replace(',', '.').trim());
       return acc + itemPrice * item.quantity;
     }, 0);
+  };
 
+  const handleFinalizePurchase = () => {
+    const formattedItems = items.map((item) => `Produto: ${item.name}\nPreço: R$${item.price}\nQuantidade: ${item.quantity}\n`).join('\n');
+    const total = calculateTotal();
     const message = `Olá, gostaria de fazer o pedido dos seguintes itens:\n\n${formattedItems}\nTotal: R$${total.toFixed(2)}`;
 
     const whatsappNumber = '5511984914325';
@@ -31,12 +35,19 @@ const PaymentPage = ({ items, onRemoveItem, onUpdateQuantity }) => {
     window.location.href = whatsappURL;
   };
 
+  const total = calculateTotal();
+
   return (
     <PaymentContainer>
       <h2>Revisão da Sacola</h2>
       <CartScroll>
         <ItemsContainer>{items && items.length > 0 ? items.map((item, index) => <CartItem key={index} item={item} onRemove={() => onRemoveItem(index)} onUpdateQuantity={(quantity) => onUpdateQuantity(index, quantity)} />) : <p>Sua sacola está vazia.</p>}</ItemsContainer>
       </CartScroll>
+      {items.length > 0 && (
+        <div>
+          <h3>Total: {formatCurrency(total)}</h3>
+        </div>
+      )}
       <CartFooter>
         <ContinueButton onClick={handleContinueShopping}>Continuar Comprando</ContinueButton>
         <FinalizeButton onClick={handleFinalizePurchase}>Finalizar Compra</FinalizeButton>
