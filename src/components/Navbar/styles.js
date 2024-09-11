@@ -168,7 +168,7 @@ export const MobileNavLinks = styled.div.withConfig({
   display: none;
   flex-direction: column;
   align-items: flex-start;
-  position: absolute;
+  position: fixed;
   top: 90px;
   left: 0;
   right: 0;
