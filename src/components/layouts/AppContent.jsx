@@ -2,6 +2,9 @@
 import React from 'react';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import Navbar from '../Navbar';
+import AdminPanel from '../AdminPanel'; // Certifique-se de importar o painel admin
+import Login from '../../pages/Login';
+import Register from '../Register';
 import Category from '../Category';
 import ItemDetails from '../ItemDetails';
 import Details from '../../pages/Details';
@@ -32,10 +35,12 @@ const AppContent = ({ cartItems, isCartOpen, toggleCart, addItemToCart, removeIt
     <>
       {location.pathname !== '/payment' && <Navbar toggleCart={toggleCart} cartItemCount={cartItems.length} />}
       <Routes>
-        <Route path="/" element={<Home onAddToCart={addItemToCart} />} />
+        <Route path="/" element={<Home onAddToCart={addItemToCart} />} /> <Route path="/login" element={<Login />} /> {/* Adicione esta linha */}
+        <Route path="/register" element={<Register />} /> {/* Nova rota */}
         <Route path="/item/:id" element={<ItemDetails onAddToCart={addItemToCart} />} />
         <Route path="/category/:categoryName" element={<CategoryPage onAddToCart={addItemToCart} />} />
         <Route path="/payment" element={<PaymentPage items={cartItems} onRemoveItem={removeItemFromCart} onUpdateQuantity={updateItemQuantity} />} />
+        <Route path="/admin" element={<AdminPanel />} /> {/* Adicione esta linha */}
       </Routes>
       <Cart items={cartItems} isOpen={isCartOpen} onClose={toggleCart} onRemoveItem={removeItemFromCart} onUpdateQuantity={updateItemQuantity} />
     </>
