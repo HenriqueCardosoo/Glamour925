@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-unused-vars
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Logo, NavLinks, NavLink, IconLink, MenuButton, MobileNavLinks, MobileNavLink, IconContainer, BurgerLine, Badge } from './styles';
 import { FaSearch, FaUser, FaHeart, FaShoppingBag } from 'react-icons/fa';
@@ -12,8 +12,21 @@ export default function Navbar({ toggleCart, cartItemCount }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [filteredItems, setFilteredItems] = useState([]);
 
+  // Autenticação
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
   // Ref para o campo de busca
   const searchInputRef = useRef(null);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const user = JSON.parse(atob(token.split('.')[1])); // Decodifica o token JWT
+      setIsLoggedIn(true);
+      setIsAdmin(user.isAdmin); // Define se o usuário é admin
+    }
+  }, []);
 
   const toggleMobileNav = () => {
     setMobileNavOpen(!isMobileNavOpen);
@@ -41,9 +54,21 @@ export default function Navbar({ toggleCart, cartItemCount }) {
       setFilteredItems([]);
     }
   };
+
   const handleItemClick = (categoryName) => {
     window.location.href = `/category/${categoryName}`;
   };
+
+  const handleUserClick = () => {
+    if (!isLoggedIn) {
+      window.location.href = '/login'; // Redireciona para a página de login
+    } else if (isAdmin) {
+      window.location.href = '/admin'; // Redireciona para o painel de admin se for admin
+    } else {
+      window.location.href = '/profile'; // Redireciona para o perfil do usuário
+    }
+  };
+
   return (
     <>
       <Container>
@@ -59,7 +84,7 @@ export default function Navbar({ toggleCart, cartItemCount }) {
           <IconLink href="#search" onClick={toggleSearch}>
             <FaSearch />
           </IconLink>
-          <IconLink href="#user">
+          <IconLink href="/login" onClick={handleUserClick}>
             <FaUser />
           </IconLink>
           <IconLink href="#wishlist">
@@ -117,6 +142,10 @@ export default function Navbar({ toggleCart, cartItemCount }) {
       )}
 
       <MobileNavLinks isOpen={isMobileNavOpen}>
+        <IconLink href="/login" onClick={handleUserClick}>
+          <FaUser />
+          Olá! Entre ou Cadastra-se
+        </IconLink>
         <MobileNavLink href="/category/aneis" onClick={toggleMobileNav}>
           Anéis
         </MobileNavLink>
